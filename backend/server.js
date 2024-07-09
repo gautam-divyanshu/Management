@@ -14,7 +14,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "public")));
 } else {
   const corsOptions = {
-    origin: [["http://127.0.0.1:3000", "https://dominion-7hz3.onrender.com"]],
+    origin: [
+      "http://127.0.0.1:3000",
+      "https://management-ivory-two.vercel.app",
+    ],
     credentials: true,
   };
   app.use(cors(corsOptions));
@@ -25,7 +28,7 @@ const userRoutes = require("./api/user/user.routes");
 const boardRoutes = require("./api/board/board.routes");
 const { setupSocketAPI } = require("./services/socket.service");
 
-// routes
+// Routes
 const setupAsyncLocalStorage = require("./middlewares/setupAls.middleware");
 app.all("*", setupAsyncLocalStorage);
 
